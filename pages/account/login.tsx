@@ -26,12 +26,10 @@ export default function Login() {
     (data: LoginInputs) => axiosClient.post('/login', data),
     {
       onSuccess: ({ data }) => {
-        if (typeof window !== 'undefined') {
-          localSetter('user', data.result);
-          localSetter('token', data.token);
-        }
         form.reset();
         onSuccess(data.message);
+        localSetter('user', data.result);
+        localSetter('token', data.token);
         router.push('/account');
       },
       onError: () => onError(),
