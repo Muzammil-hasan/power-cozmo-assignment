@@ -9,7 +9,6 @@ import { Box } from '@mui/system';
 import { useMutation } from '@tanstack/react-query';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { onError, onSuccess } from 'utils';
 
@@ -26,17 +25,17 @@ export default function Register() {
   const form = useForm<RegisterInputs>({ resolver: zodResolver(RegistrationSchema) });
   const { errors } = form.formState;
 
-  const { mutate, isLoading, status, data } = useMutation((data: RegisterInputs) =>
-    axiosClient.post('/register', data)
+  const { mutate, isLoading } = useMutation(
+    (data: RegisterInputs) => axiosClient.post('/register', data),
+    {
+      onSuccess: ({ data }) => {
+        form.reset();
+        onSuccess(data.message);
+        router.push('/account/login');
+      },
+      onError: () => onError(),
+    }
   );
-
-  useEffect(() => {
-    if (status === 'success') {
-      onSuccess(data.data.message);
-      form.reset();
-      router.push('/account/login');
-    } else if (status === 'error') onError();
-  }, [status]);
 
   return (
     <div className="flex items-center justify-center min-h-screen">
