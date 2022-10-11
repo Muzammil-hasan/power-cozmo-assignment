@@ -1,6 +1,7 @@
 import { Menu, Transition } from '@headlessui/react';
 import { ArrowLeftOnRectangleIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 import { Avatar } from '@mui/material';
+import { deepOrange } from '@mui/material/colors';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import { Fragment } from 'react';
@@ -16,7 +17,9 @@ export default function ProfileDropDown() {
     <Menu as="div" className="relative inline-block text-left">
       <div>
         <Menu.Button>
-          <Avatar className="p-4 text-base bg-red-500">M</Avatar>
+          <Avatar className="p-4 text-base" sx={{ bgcolor: deepOrange[500] }}>
+            M
+          </Avatar>
         </Menu.Button>
       </div>
       <Transition

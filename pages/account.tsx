@@ -1,6 +1,7 @@
 import { useUserContext } from '@/context/UserContext';
 import ModeEditOutlineIcon from '@mui/icons-material/ModeEditOutline';
 import { Avatar } from '@mui/material';
+import { deepOrange } from '@mui/material/colors';
 import IconButton from '@mui/material/IconButton';
 import { isEmpty, omit } from 'lodash-es';
 
@@ -14,7 +15,7 @@ export default function Account() {
         <section className="px-16 py-12">
           <div className="flex items-center gap-x-10">
             <div className="relative inline-block">
-              <Avatar className="w-32 h-32 p-4 text-6xl bg-red-500">
+              <Avatar className="!w-32 !h-32 p-4 text-6xl" sx={{ bgcolor: deepOrange[500] }}>
                 {user.name.split('')[0]}
               </Avatar>
               <IconButton className="absolute bottom-0.5 right-0 p-1 bg-white shadow-lg">
