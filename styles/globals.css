@@ -2,6 +2,5 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-body {
-  @apply font-primary overflow-x-hidden;
-}
+/* Custom */
+@import './partials/typography.css';
