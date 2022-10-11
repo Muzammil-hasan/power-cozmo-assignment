@@ -2,9 +2,16 @@ import { Menu, Transition } from '@headlessui/react';
 import { ArrowLeftOnRectangleIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 import { Avatar } from '@mui/material';
 import clsx from 'clsx';
+import { useRouter } from 'next/router';
 import { Fragment } from 'react';
 
 export default function ProfileDropDown() {
+  const router = useRouter();
+  const handleLogout = () => {
+    localStorage.clear();
+    router.push('/account/login');
+  };
+
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
@@ -39,6 +46,7 @@ export default function ProfileDropDown() {
             <Menu.Item as={'li'}>
               {({ active }) => (
                 <button
+                  onClick={() => handleLogout()}
                   className={clsx(
                     'group flex w-full items-center rounded-md px-2 py-2 text-sm',
                     `${active ? 'bg-blue-100' : 'text-gray-900'}`
