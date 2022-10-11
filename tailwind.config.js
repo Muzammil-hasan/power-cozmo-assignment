@@ -9,7 +9,14 @@ module.exports = {
     fontFamily: {
       primary: ['Inter', 'sans-serif'],
     },
-    extend: {},
+    extend: {
+      transitionDuration: {
+        400: '400ms',
+      },
+      transitionTimingFunction: {
+        'out-expo': 'cubic-bezier(0.19, 1, 0.22, 1)',
+      },
+    },
   },
   plugins: [],
 };

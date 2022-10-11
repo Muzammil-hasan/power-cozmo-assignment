@@ -1,0 +1,9 @@
+@layer utilities {
+  .active-link {
+    @apply bg-blue-400 hover:!bg-blue-500 text-white;
+  }
+
+  .transition-ease {
+    @apply transition-all duration-400 ease-out-expo will-change-transform;
+  }
+}
